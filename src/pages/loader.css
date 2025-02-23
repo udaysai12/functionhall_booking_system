@@ -1,0 +1,37 @@
+@keyframes text {
+    0% { letter-spacing: 1px; transform: translateX(0); }
+    40% { letter-spacing: 2px; transform: translateX(26px); }
+    80% { letter-spacing: 1px; transform: translateX(32px); }
+    90% { letter-spacing: 2px; transform: translateX(0); }
+    100% { letter-spacing: 1px; transform: translateX(0); }
+  }
+  
+  @keyframes loading {
+    0% { width: 1rem; transform: translateX(0); }
+    40% { width: 100%; transform: translateX(0); }
+    80% { width: 1rem; transform: translateX(4rem); }
+    90% { width: 100%; transform: translateX(0); }
+    100% { width: 1rem; transform: translateX(0); }
+  }
+  
+  @keyframes loading2 {
+    0% { transform: translateX(0); width: 1rem; }
+    40% { transform: translateX(0); width: 80%; }
+    80% { width: 100%; transform: translateX(0); }
+    90% { width: 80%; transform: translateX(1rem); }
+    100% { transform: translateX(0); width: 1rem; }
+  }
+  
+  /* Add Tailwind classes for animations */
+  .animate-text {
+    animation: text 3.5s ease-in-out infinite;
+  }
+  
+  .animate-loading {
+    animation: loading 3.5s ease-in-out infinite;
+  }
+  
+  .animate-loading2 {
+    animation: loading2 3.5s ease-in-out infinite;
+  }
+  

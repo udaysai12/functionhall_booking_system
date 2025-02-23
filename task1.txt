@@ -1,0 +1,289 @@
+1. User Registration Page (/register):
+Purpose: Allow new users to create an account.
+
+Fields Required:
+
+Name (text)
+Email (text, validated for proper email format)
+Password (password field, minimum strength validation)
+Contact Number (text, optional validation for phone number format)
+
+
+Features:
+
+Form validation to ensure all fields are filled.
+Email format validation.
+Password strength validation (e.g., minimum 8 characters).
+On form submit, data is sent to the backend or stored in state (depending on your architecture).
+Page Design Requirements:
+
+Registration form
+Submit button
+Error message handling for incorrect or missing data
+
+
+
+
+
+
+
+2. User Login Page (/login):
+Purpose: Allow users to log in to their account.
+
+Fields Required:
+
+Email (text, validated for proper email format)
+Password (password field)
+Features:
+
+Form validation to ensure fields are filled.
+Authenticate credentials by sending them to the backend API or comparing with stored data.
+Redirect users to the main application dashboard upon successful login.
+Page Design Requirements:
+
+Login form
+Submit button
+Error messages for failed authentication or missing fields
+
+
+
+
+
+
+
+
+
+3. Main Dashboard Page (/dashboard):
+Purpose: Main interface where users can navigate between Function Halls, Sports Facilities, and Wellness Services.
+
+Features:
+
+Display categories: Function Halls, Sports Facilities, Wellness Services.
+Navigation options for each category.
+User greeting with options to log out or manage profile.
+Page Design Requirements:
+
+Dashboard with cards or buttons for each category.
+Profile management link
+Logout button
+
+
+
+
+
+
+
+
+
+4. Function Halls Page (/function-halls):
+Purpose: Allow users to browse and book function halls for various events.
+
+Features:
+
+Fetch data from Google Sheets API for real-time availability and pricing.
+Filters:
+Guest Capacity
+Budget
+Date/Time slots
+Display venue details such as images, descriptions, and location.
+Real-time booking and availability updates.
+Booking confirmation.
+Page Design Requirements:
+
+Filters section on the left or top
+List of function halls (with real-time data)
+Booking form (with date, time, guest details)
+
+
+
+
+5. Sports Facilities Page (/sports-facilities):
+Purpose: Allow users to reserve courts for sports.
+
+Features:
+
+Fetch data from Google Sheets API for real-time availability and pricing.
+Filters:
+Sport Type (Badminton, Cricket, Basketball)
+Player Count
+Budget
+Date/Time slots
+Real-time availability updates for the sports courts.
+Display sports venue details with location, pricing, and capacity.
+Booking confirmation.
+Page Design Requirements:
+
+Filters section on the left or top
+List of available sports facilities (real-time data)
+Booking form (with date, time, and player details)
+
+
+
+
+
+
+
+6. Wellness Services Page (/wellness-services):
+Purpose: Enable users to book wellness services like yoga, dance lessons, etc.
+
+Features:
+
+Fetch data from Google Sheets API for real-time availability and pricing.
+Filters:
+Service Type (Yoga, Dance, Library Room, etc.)
+Multiple booking dates
+Preferred times for services
+Real-time availability updates for services.
+Display service details, including available slots, instructors, and pricing.
+Multiple date selection and booking confirmation.
+Page Design Requirements:
+
+Filters section on the left or top
+List of available services (real-time data)
+Booking form (with date, time, and service details)
+7. Profile Management Page (/profile):
+Purpose: Allow users to manage their profile details.
+
+Features:
+
+Update Name, Email, Password, and Contact Number.
+Display current bookings and past bookings.
+Logout button.
+Page Design Requirements:
+
+Form for updating user details.
+List of current and past bookings with cancel or modify options.
+8. Booking Confirmation Page (/booking-confirmation):
+Purpose: Display booking details and confirmation to the user.
+
+Features:
+
+Show booking details (facility, date, time, cost).
+Option to cancel or modify booking.
+Confirmation message.
+Page Design Requirements:
+
+Booking details display
+Cancel/Modify options
+Confirmation message
+9. Google Sheets Integration:
+Purpose: Fetch facility information from Google Sheets for real-time updates.
+
+Features:
+
+Use Google Sheets API to pull data for function halls, sports facilities, and wellness services.
+Real-time updates when the sheet is modified.
+Map the data to React state to display availability, pricing, and details dynamically.
+API Setup Requirements:
+
+Google Sheets API setup
+Authentication and authorization with OAuth
+Data mapping and state management in React
+10. Additional Requirements:
+Responsive Design: Ensure all pages are mobile-friendly using responsive CSS.
+Routing: Use React Router to handle the navigation between pages.
+State Management: You can use React Context or Redux to manage the global state (e.g., user login status, selected facilities).
+Error Handling: Display user-friendly error messages for login failure, invalid bookings, or data fetch failures.
+Technology Stack:
+Frontend:
+React.js for UI components.
+React Router for navigation between pages.
+Axios or Fetch API for communicating with Google Sheets API.
+CSS/SCSS for styling (or a framework like Tailwind CSS).
+Backend:
+Node.js/Express (optional, if you want to manage login/authentication on your server).
+Database:
+Google Sheets API for real-time data management.
+Let me know if you need specific code examples or more details!
+
+
+
+
+
+
+
+my-app/
+├── public/
+│   ├── index.html                # Main HTML file
+│   ├── favicon.ico               # Favicon
+│   └── assets/                   # Static assets like images, icons, etc.
+├── src/
+│   ├── components/               # Reusable UI components
+│   │   ├── Button.js
+│   │   ├── Card.js
+│   │   ├── Navbar.js
+│   │   └── Footer.js
+│   ├── layouts/                  # Layout components for different page structures
+│   │   ├── AuthLayout.js         # Layout for Login and Register pages
+│   │   └── DashboardLayout.js    # Layout for Dashboard and related pages
+│   ├── pages/                    # Main pages for the application
+│   │   ├── Register.js           # Registration Page (/register)
+│   │   ├── Login.js              # Login Page (/login)
+│   │   ├── Dashboard.js          # Dashboard Page (/dashboard)
+│   │   ├── FunctionHalls.js      # Function Halls Page (/function-halls)
+│   │   ├── SportsFacilities.js   # Sports Facilities Page (/sports-facilities)
+│   │   ├── WellnessServices.js   # Wellness Services Page (/wellness-services)
+│   │   ├── Profile.js            # Profile Management Page (/profile)
+│   │   └── BookingConfirmation.js # Booking Confirmation Page (/booking-confirmation)
+│   ├── services/                 # API service files
+│   │   ├── api.js                # Backend API calls
+│   │   └── googleSheets.js       # Google Sheets API integration
+│   ├── hooks/                    # Custom React hooks for data fetching and state handling
+│   │   └── useFetchBookings.js
+│   ├── context/                  # Context files for global state management
+│   │   ├── AuthContext.js        # Authentication context
+│   │   └── BookingContext.js     # Context for managing booking state
+│   ├── App.js                    # Main app component with routes and providers
+│   ├── index.js                  # React entry point, rendering the App component
+│   ├── routes/                   # Route components and configurations
+│   │   └── AppRoutes.js          # File for defining and exporting all routes
+│   ├── styles/                   # Styles for global and component-specific CSS/SCSS
+│   │   ├── main.css              # Global CSS
+│   │   ├── Register.css          # Specific CSS for Register page
+│   │   ├── Dashboard.css         # Specific CSS for Dashboard page
+│   │   └── Booking.css           # Specific CSS for Booking components
+│   ├── utils/                    # Utility functions for validation, formatting, etc.
+│   │   ├── validators.js         # Form validation functions
+│   │   └── formatDate.js         # Utility for formatting dates
+└── package.json                  # Project metadata and dependencies
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/dashboard-template
+│
+├── public
+│   ├── index.html          # Main HTML file
+│
+└── src
+    ├── components
+    │   ├── Navbar.js       # Top navigation bar
+    │   ├── Sidebar.js      # Side navigation for quick links
+    │   └── Card.js         # Reusable card component
+    │
+    ├── pages
+    │   ├── Dashboard.js    # Main dashboard page
+    │   ├── FunctionHalls.js# Function halls booking page
+    │   ├── SportsFacilities.js # Sports facilities booking page
+    │   ├── WellnessServices.js # Wellness services booking page
+    │   └── Profile.js      # User profile management page
+    │
+    ├── App.js              # Main app component
+    ├── index.js            # Entry point
+    └── styles
+        ├── App.css         # Global styles
+        └── Dashboard.css   # Dashboard-specific styles
